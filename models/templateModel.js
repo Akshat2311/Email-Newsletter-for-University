@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 const templateSchema = mongoose.Schema({
     name:{
         type: String,
-        required:true
+        required:true,
+        unique:true
     },
     variables:[
         {
@@ -12,7 +13,8 @@ const templateSchema = mongoose.Schema({
     ],
     clubName:{
         type:String,
-        required:true   
+        required:true,
+        unique:true   
     },
     subscribers:[
         {

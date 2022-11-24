@@ -18,7 +18,6 @@ const userSchema = mongoose.Schema({
     password:{
         type:String,
         required:true,
-        default:Date.now()
     },
     isAdmin:{
         type:Boolean,

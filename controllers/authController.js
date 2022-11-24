@@ -39,8 +39,7 @@ const login = asyncHandler(async(req,res) => {
     const { email, password } = req.body
     const userExists = await User.findOne({ email })
     if(userExists){
-        if(await userExists.matchPassword(password)) {
-            await User.findOneAndUpdate({ email:email },{ lastLogin:Date.now() })
+        if(userExists && (await userExists.matchPassword(password))) {
             res.status(200).json({
                 _id:userExists._id,
                 name:userExists.name,
@@ -52,7 +51,7 @@ const login = asyncHandler(async(req,res) => {
             })
         }
         else{
-            sendLoginWarningEmail(userExists.name, email)
+            // sendLoginWarningEmail(userExists.name, email)
             res.status(401).json({
                 message:"Bad credentials"
             })

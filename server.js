@@ -15,8 +15,6 @@ const PORT = process.env.PORT || 5001;
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
-const __dirname = resolve();
-
 const app = express();
 
 app.use(cors({
@@ -28,7 +26,7 @@ app.use(express.json());
 
 app.use('/api/v1/auth',authRoutes);
 
-app.use('/api/v1/template',recoveryRoutes);
+app.use('/api/v1/template',templateRoutes);
 
 app.get('/',(req,res) => res.send("Hello World"));
 
@@ -36,5 +34,5 @@ app.use(notFound);
 
 app.use(errorHandler);
 
-app.listen(PORT,console.log(`Server started at ${PORT} in ${NODE_ENV}`.cyan));
+app.listen(PORT,console.log(`Server started at ${PORT} in ${NODE_ENV}`));
 

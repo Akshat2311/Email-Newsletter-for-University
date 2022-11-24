@@ -21,7 +21,7 @@ const transporter = nodemailer.createTransport({
     } 
 });
 
-transporter.use('compile',hbs({viewEngine:'nodemailer-express-handlebars', viewPath:path.join(__dirname,'/backend/templates')}));   
+transporter.use('compile',hbs({viewEngine:'nodemailer-express-handlebars', viewPath:path.join(__dirname,'/templates')}));   
 
 const sendMail = (mailOptions) => {
     transporter.sendMail(mailOptions,(err,info) => {
